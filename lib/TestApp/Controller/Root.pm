@@ -12,7 +12,7 @@ sub index :Path :Args(0) {
     $c->res->body("Index<br><a href='/about'>About</a> <a href='/broken'>Not here</a> <a href='/admin'>Admin</a>");
 }
 
-sub default :Path {
+sub default :Chained("/") :PathPart("") :Args {
     my ( $self, $c ) = @_;
     $c->res->body("Page not found<br><a href='/'>Index</a>");
     $c->res->status(404);
